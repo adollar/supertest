@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>случайное число {{ luckynumb }}</h1>
+<div id="grid">
+      <div class="grid-item"><a href="{{ path('homepage') }}">случайное от 1 до 100</a></div>
+      <div class="grid-item"><a href="{{ path('onepage') }}">случайное от 50 до 55</a></div>
+      <div class="grid-item" style="background-color:#{{ colorr }};"><a href="{{ path('zveropolis') }}"> случайный цвет </a></div>
+      </div>
+<a href="{{ path('homepage') }}">случайное от 1 до 100</a>
+<a href="{{ path('onepage') }}">случайное от 50 до 55</a>
+<a href="{{ path('zveropolis') }}"> случайный цвет </a>
+{% endblock %}
