@@ -9,7 +9,7 @@ section {
 }
 
 #grid {
-  grid-template-columns: 150px 1fr 150px;  /* three columns */
+  grid-template-columns: 1fr 1fr 1fr;  /* three columns */
   grid-template-rows: 50px auto 50px; /* three rows  */
 }
 
