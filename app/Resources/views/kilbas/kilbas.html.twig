@@ -6,7 +6,9 @@
       <div class="grid-item"><a href="{{ path('onepage') }}">случайное от 50 до 55</a></div>
       <div class="grid-item" style="background-color:#{{ colorr }};"><a href="{{ path('zveropolis') }}"> случайный цвет </a></div>
       </div>
-<a href="{{ path('homepage') }}">случайное от 1 до 100</a>
+<p><strong>погода в місті Одеса:</strong> швидкість вітру: {{wind_speed}}</p>
+<p>температура повітря: {{wea_ther}}</p>
+<p>openweathermap.org</p>
 <a href="{{ path('onepage') }}">случайное от 50 до 55</a>
 <a href="{{ path('zveropolis') }}"> случайный цвет </a>
 {% endblock %}
