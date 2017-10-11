@@ -1,0 +1,27 @@
+section {
+  padding: 0 1em;
+}
+
+#grid,
+#grid2,
+#grid3 {
+  display: grid;
+}
+
+#grid {
+  grid-template-columns: 1fr 1fr 1fr;  /* three columns */
+  grid-template-rows: 50px auto 50px; /* three rows  */
+}
+
+#grid2 {
+  grid-template-columns: 150px 1fr auto;  /* three columns */
+  grid-template-rows: 50px auto 50px; /* three rows  */
+}
+
+#grid3 {
+  grid-template: 50px auto 50px / 150px 1fr auto; /* three rows / three columns */
+}
+.grid-item {
+  background-color: rgba(255, 87, 34, 0.86);
+  margin: 3px;
+}
