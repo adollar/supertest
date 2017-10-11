@@ -1,14 +1,45 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>случайное число {{ luckynumb }}</h1>
-<div id="grid">
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Project kilbas</h3>
+        <span><strong>погода в місті Одеса:</strong> температура повітря: {{wea_ther}}° швидкість вітру: {{wind_speed}} м/с
+</span>
+      </div>
+
+      <div class="jumbotron">
+        <h1>случайное число {{ luckynumb }}</h1>
+        <p><a class="btn btn-lg btn-success" href="{{ path('homepage') }}" role="button">получить случайное число</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <div id="grid">
       <div class="grid-item"><a href="{{ path('homepage') }}">случайное от 1 до 100</a></div>
       <div class="grid-item"><a href="{{ path('onepage') }}">случайное от 50 до 55</a></div>
       <div class="grid-item" style="background-color:#{{ colorr }};"><a href="{{ path('zveropolis') }}"> случайный цвет </a></div>
       </div>
-<p><strong>погода в місті Одеса:</strong> швидкість вітру: {{wind_speed}}</p>
-<p>температура повітря: {{wea_ther}}°</p>
-<p>openweathermap.org</p>
-<a href="{{ path('onepage') }}">случайное от 50 до 55</a>
-<a href="{{ path('zveropolis') }}"> случайный цвет </a>
+        </div>
+
+        <div class="col-lg-6">
+          
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; kilbas project</p>
+      </footer>
+
+    </div> <!-- /container -->
+
 {% endblock %}
+
+    
+ 
