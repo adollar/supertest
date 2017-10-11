@@ -28,7 +28,7 @@ class DefaultController extends Controller
     */
     public function pageAction()
     {
-        $url = 'http://api.openweathermap.org/data/2.5/weather?q=Odessa&APPID=c4d64189685c30187df7546364d23e5b';
+        $url = 'http://api.openweathermap.org/data/2.5/weather?q=Odessa&units=metric&APPID=c4d64189685c30187df7546364d23e5b';
         $obj = json_decode(file_get_contents($url), true);
         $num=mt_rand(50,55);
         return $this->render('kilbas/kilbas.html.twig', array('wind_speed' => $obj['wind']['speed'],'wea_ther'=> $obj['main']['temp'], 'luckynumb'=>$num, 'colorr'=>null));
@@ -40,7 +40,7 @@ class DefaultController extends Controller
     */
     public function zveropolisAction()
     {
-        $url = 'http://api.openweathermap.org/data/2.5/weather?q=Odessa&APPID=c4d64189685c30187df7546364d23e5b';
+        $url = 'http://api.openweathermap.org/data/2.5/weather?q=Odessa&units=metric&APPID=c4d64189685c30187df7546364d23e5b';
         $obj = json_decode(file_get_contents($url), true);
         $colori=mt_rand(100,900);
         return $this->render('kilbas/kilbas.html.twig', array('wind_speed' => $obj['wind']['speed'],'wea_ther'=> $obj['main']['temp'], 'colorr'=>$colori, 'luckynumb'=>'нет'));
