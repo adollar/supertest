@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+      <div class="jumbotron">
+    
+ 
+<form class="form-inline">
+
+  {{ form_start(form) }}
+ <div class="form-group">
+<label  for="name2">Ім'я</label>
+
+{{ form_widget(form.name,  {'attr': {'class': 'form-control','id':'name2'}}) }}
+</div>
+<div class="form-group">
+<label for="Name3">Кабінет</label>
+ 
+{{ form_widget(form.cabinet, {'attr': {'class': 'form-control','id':'name3'}}) }}
+<label for="Name3">monitor</label>
+ 
+{{ form_widget(form.idmonitor, {'attr': {'class': 'form-control','id':'name3'}}) }}
+
+{{ form_widget(form.save, {'attr':{'class':'btn btn-default'}}) }}
+</div>
+
+{{ form_end(form) }}
+</form>
+
+
+{% endblock %}

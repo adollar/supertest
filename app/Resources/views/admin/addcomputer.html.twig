@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+      <div class="jumbotron">
+      
+<form class="form-inline">
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+</form>
+
+<table class="table">
+<tr><th>id</th><th>cpu</th><th>ram</th><th>hdd</th></tr>
+{% for compall in compalls %}
+
+<tr><td>{{ compall.id }}</td><td>{{ compall.cpu }}</td><td>{{ compall.ram }}</td><td>{{ compall.hdd }}</td></tr>
+
+{% endfor %}
+</table>
+
+</div>
+{% endblock %}

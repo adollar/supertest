@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+      <div class="jumbotron">
+      <table class="table">
+      <tr><th>id</th><th>модель</th><th>діагональ</th></tr>
+{% for monik in moniks %}
+
+<tr><td>{{ monik.id }}</td><td>{{ monik.model }}</td><td>{{ monik.diagonal }}</td></tr>
+
+{% endfor %}
+</table>
+</div>
+{% endblock %}

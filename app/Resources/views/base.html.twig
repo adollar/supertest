@@ -5,12 +5,41 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link href="{{ asset('build/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('build/bootstrap-3.3.7-dist/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+        <script src="{{ asset('build/bootstrap-3.3.7-dist/jquery-3.2.1.min.js') }}"></script>
         <link href="{{ asset('build/jumbotron-narrow.css') }}" rel="stylesheet" type="text/css" />
+        <script src="{{ asset('build/bootstrap-3.3.7-dist/js/bootstrap.js') }}"></script>
+        
 
     </head>
     <body>
+<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="{{ path('homepage') }}">головна</a></li>
+             
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">монітори
+                <span class="caret"></span>
+            </a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('monitors') }}">монітори</a></li>
+                    <li><a href="{{ path('addmonitor') }}">додати монітор</a></li>
+                    <li><a href="{{ path('adduser') }}">додати користувача</a></li>
+                    <li><a href="{{ path('addcomputer') }}">додати комп</a></li>
+                </ul></li>
+            <li role="presentation"><a href="{{ path('users') }}">користувачі</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Project kilbas</h3>
+        <span><strong>погода в місті Одеса:</strong> температура повітря:<span class="badge"> {{wea_ther}}°</span> швидкість вітру: <span class="badge">{{wind_speed}} м/с</span>
+        </span>
+      </div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        
+
+        
     </body>
 </html>
