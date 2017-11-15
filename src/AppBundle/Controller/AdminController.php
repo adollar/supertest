@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Polzovatel;
 use AppBundle\Entity\Monitor;
 use AppBundle\Entity\computer;
+use AppBundle\Form\MonitorType;
+use AppBundle\Form\PolzovatelType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Forms;
@@ -19,51 +21,44 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends Controller
 {
 
-/**
+    /**
      * @Route("/adduser", name="adduser")
      */
-    public function adduserAction(Request $request)
-    {
-        $monitor = new Monitor();
-        
-    	$polzov = new Polzovatel();
-        
-    	$form=$this->createFormBuilder($polzov)
-        ->setMethod('GET')
-    	->add('name',TextType::class)
-    	->add('cabinet',IntegerType::class)
-    	->add('idmonitor',IntegerType::class)
-    	->add('save',SubmitType::class, array('label' =>'Create Polzovatel'))
-    	->getForm();
+    public function adduserAction(Request $request) {
+        $polzov = new Polzovatel();
 
+        //тут тебе надо объяснить каким образом ты хочешь связать эти две сущности (Polzovatel, Monitor)
+        $form = $this->createForm(PolzovatelType::class, $polzov)
+            ->add('idmonitor',
+                MonitorType::class,
+                [
+                    'data_class' => Monitor::class,
+                ])
+            ->add('save', SubmitType::class, ['label' => 'Create Polzovatel']);
 
-    	 $form->handleRequest($request);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $polzov = $form->getData();
+            $em     = $this->getDoctrine()->getManager();
+            $em->persist($polzov);
+            $em->flush();
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        
-        $polzov = $form->getData();
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($polzov);
-        $em->persist($monitor);
-        $em->flush();
+            return $this->render('admin/addpolzov.html.twig',
+                [
+                    'form'       => $form->createView(),
+                    'wind_speed' => null,
+                    'wea_ther'   => null,
+                ]);
+        }
 
-        return $this->render('admin/addpolzov.html.twig', array(
-            'form' => $form->createView(),'wind_speed' =>null, 'wea_ther'=>null
-        ));
-   }
-
-
-
-
-
-    	return $this->render('admin/addpolzov.html.twig', array('form' => $form->createView(),
-            'wind_speed' =>null, 'wea_ther'=>null
-        ));
+        return $this->render('admin/addpolzov.html.twig',
+            [
+                'form'       => $form->createView(),
+                'wind_speed' => null,
+                'wea_ther'   => null,
+            ]);
     }
-
-
-
 
     /**
      * @Route("/addmonitor", name="addmonitor")

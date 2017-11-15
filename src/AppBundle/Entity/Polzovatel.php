@@ -37,7 +37,7 @@ class Polzovatel
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Monitor", inversedBy="polzovatels")
+     * @ORM\ManyToOne(targetEntity="Monitor", inversedBy="polzovatels", cascade={"persist"})
      * @ORM\JoinColumn(name="id_monitor", referencedColumnName="id")
      */
     private $idmonitor;
